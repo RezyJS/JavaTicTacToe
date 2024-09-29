@@ -81,7 +81,6 @@ public class Main {
     }
 
     static boolean checkIfSomeoneWon(char player, char[][] field) {
-        // check every line
         int cnt = 0;
         for (char[] line: field) {
             for (char c: line) {
@@ -91,7 +90,6 @@ public class Main {
             else cnt = 0;
         }
 
-        // check every column
         for (byte i = 0; i < 3; ++i) {
             for (byte j = 0; j < 3; ++j) {
                 if (field[j][i] == player) ++cnt;
@@ -100,10 +98,8 @@ public class Main {
             else cnt = 0;
         }
 
-        // check main diagonal
         if (field[0][0] == field[1][1] && field[1][1] == field[2][2] && field[0][0] == player) return true;
 
-        // check second diagonal
         if (field[0][2] == field[1][1] && field[1][1] == field[2][0] && field[0][2] == player) return true;
 
         return false;

@@ -9,7 +9,7 @@ public class Main {
 
             System.out.println();
             System.out.println("Напишите 'выход' чтобы закончить играть!");
-            String wannaContinue = scanner.nextLine();
+            String wannaContinue = scanner.next();
 
             if (wannaContinue.equals("выход")) {
                 break;
@@ -30,10 +30,10 @@ public class Main {
 
         System.out.println();
 
-        boolean win = false;
+        boolean win;
         char player = 'X';
 
-        while (!win) {
+        while (true) {
             makeMove(player, field, sc);
             win = checkIfSomeoneWon(player, field);
             if (win) {
@@ -69,10 +69,12 @@ public class Main {
 
     static void makeMove(char player, char[][] arr, Scanner sc) {
         byte x = 0, y = 0;
-        while (x < 1 || x > 3 || y < 1 || y > 3) {
+
+        while (x < 1 || x > 3 || y < 1 || y > 3 || arr[x - 1][y - 1] != ' ') {
             x = sc.nextByte();
             y = sc.nextByte();
         }
+
         if (player == 'X') {
             arr[x - 1][y - 1] = 'X';
         } else {
